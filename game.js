@@ -21,13 +21,31 @@ function draw() {
     canvasContext.fillStyle = 'black';
     canvasContext.fillRect(0, 0, canvas.width, canvas.height);
     canvasContext.fillStyle = 'red';
-    canvasContext.fillRect(posx1, posy1, 100, 50);
-    canvasContext.fillStyle = 'green';
-    canvasContext.fillRect(posx1 - 110, posy1, 100, 50);
-    canvasContext.fillStyle = 'red';
-    canvasContext.fillRect(posx1 - 220, posy1, 100, 50);
-    canvasContext.fillStyle = 'green';
-    canvasContext.fillRect(posx1 - 330, posy1, 100, 50);
+    canvasContext.fillRect(posx1, posy1, 50, 50);
+    if(moveside == 1 && movedirLR == 1) {
+        canvasContext.fillStyle = 'green';
+        canvasContext.fillRect(posx1 - 55, posy1, 50, 50);
+    }
+    else if(movedirLR == -1 && moveside == 1)
+    {
+        canvasContext.fillStyle = 'green';
+        canvasContext.fillRect(posx1 + 55 , posy1 , 50, 50);
+    }
+    else if(movedirUD == -1 && moveside == 0)
+    {
+        canvasContext.fillStyle = 'green';
+        canvasContext.fillRect(posx1 , posy1 + 55, 50, 50);
+    }
+    else if(movedirUD == 1 && moveside == 0)
+    {
+        canvasContext.fillStyle = 'green';
+        canvasContext.fillRect(posx1 , posy1 - 55, 50, 50);
+    }
+
+    //canvasContext.fillStyle = 'red';
+    //canvasContext.fillRect(posx1 - 220, posy1, 50, 50);
+    //canvasContext.fillStyle = 'green';
+    //canvasContext.fillRect(posx1 - 330, posy1, 50, 50);
 }
 
 function kbinput()
@@ -70,7 +88,7 @@ function move() {
     else {
         posy1 = posy1 + movedirUD;
     }
-    if(posx1 >= 1130) {
+    if(posx1 >= 1130 || posy1 >= 900 || posy1 <= -100 ) {
         posx1 = -200;
         posy1 = 300;
     }
